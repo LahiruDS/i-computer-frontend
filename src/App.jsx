@@ -2,24 +2,31 @@ import { useState } from 'react'
 import './App.css'
 import ProductCard from './components/productCard'
 import Header from './components/header'
+import Test from './components/test'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import HomePage from './pages/homePage'
+import LoginPage from './pages/loginPage'
+import RegisterPage from './pages/registerPage'
+import AdminPage from './pages/adminPage'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <>
-    <div className="w-[600px] h-[600px] border bg-gray-400 flex justify-center items-center">
-      <div className="w-[500px] h-[500px]  bg-yellow-200 flex flex-col justify-center items-center">
-        <div className="w-[100px] h-[100px]  bg-red-500 fixed left-[500px] top-[500px]"></div>
-        <div className="w-[100px] h-[100px]  bg-green-500 absolute left-[500px]"></div>
-        <div className="w-[100px] h-[100px]  bg-blue-600"></div>
-        <div className="w-[100px] h-[100px]  bg-pink-500"></div>
-      </div>
 
-    </div>
+    <BrowserRouter>
+        <div className="w-full h-screen bg-primary text-secondary">
+            <Routes path="/">
+                <Route path="/" element={<HomePage/>}/>
+                <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/register" element={<RegisterPage/>}/>
+                <Route path="/admin" element={<AdminPage/>}/>
+            </Routes>
+        
+        </div>
+    </BrowserRouter>
     
-    </>
-  )
+  );
 }
 
 export default App
